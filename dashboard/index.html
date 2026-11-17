@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar: pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<a class="skip" href="#board">Skip to the board</a>
+<header class="masthead">
+  <div>
+    <h1>Token Radar</h1>
+    <p class="tagline">Pre-token protocols, ranked by what a token might be worth &mdash; and what to do about it.</p>
+  </div>
+  <div class="masthead-meta" id="masthead-meta">Loading the snapshot&hellip;</div>
+</header>
+<main id="board" tabindex="-1" aria-busy="true">
+  <section class="controls" aria-label="Board controls">
+    <label class="search">Search
+      <input id="q" type="search" placeholder="Protocol name or slug&hellip;" autocomplete="off">
+    </label>
+    <label>Category
+      <select id="f-cat"><option value="">All categories</option></select>
+    </label>
+    <label>Chain
+      <select id="f-chain"><option value="">All chains</option></select>
+    </label>
+    <label>Set
+      <select id="f-set">
+        <option value="all">All rows</option>
+        <option value="watchlist">Watchlist only</option>
+        <option value="early">Early radar only</option>
+      </select>
+    </label>
+    <label>Sort by
+      <select id="f-sort">
+        <option value="implied">Implied value</option>
+        <option value="tvl">TVL</option>
+        <option value="age">Age (oldest first)</option>
+        <option value="growth">7-day change</option>
+      </select>
+    </label>
+  </section>
+  <p class="count" id="count"></p>
+  <div class="table-wrap">
+    <table id="board-table">
+      <thead><tr>
+        <th class="num">#</th><th>Protocol</th><th>Category</th><th>Chains</th>
+        <th class="num">TVL</th><th class="num">7d</th><th class="num">Age</th>
+        <th class="num">Implied value</th><th>Farm plan</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <section class="live" aria-label="Live token protocols">
+    <h2>Already trading: live-token protocols</h2>
+    <p>These already have a token, so the board shows the market&rsquo;s own value for them &mdash; never a
+    model estimate, and never as a farm target. Included so the radar&rsquo;s calibration can be checked
+    against real market caps.</p>
+    <div class="table-wrap">
+      <table id="live-table">
+        <thead><tr>
+          <th>Protocol</th><th>Category</th><th>Chains</th>
+          <th class="num">TVL</th><th class="num">Market cap</th><th class="num">7d</th>
+        </tr></thead>
+        <tbody id="live-rows"></tbody>
+      </table>
+    </div>
+  </section>
+  <section class="method" aria-label="How the radar works">
+    <h2>How the radar works</h2>
+    <div id="method-body"></div>
+  </section>
+</main>
+<aside id="drawer" class="drawer" aria-label="Protocol detail" hidden>
+  <button id="drawer-close" type="button" aria-label="Close detail">&times;</button>
+  <div id="drawer-body"></div>
+</aside>
+<div id="drawer-backdrop" class="drawer-backdrop" hidden></div>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
